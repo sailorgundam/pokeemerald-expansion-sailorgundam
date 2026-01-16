@@ -3616,6 +3616,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .levelUpLearnset = sPikachuLevelUpLearnset,
         .teachableLearnset = sPikachuTeachableLearnset,
         .formSpeciesIdTable = sPikachuFormSpeciesIdTable,
+        .evolutions = EVOLUTION({EVO_ITEM, ITEM_THUNDER_STONE, SPECIES_RAICHU_ALOLA}),
     },
 
     [SPECIES_PIKACHU_PARTNER] =

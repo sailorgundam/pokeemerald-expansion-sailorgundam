@@ -1659,7 +1659,7 @@ const struct Item gItemsInfo[] =
     [ITEM_ADAMANT_MINT] =
     {
         .name = ITEM_NAME("Adamant Mint"),
-        .price = (I_PRICE >= GEN_9) ? 20000 : 20,
+        .price = (I_PRICE >= GEN_9) ? 20 : 20,
         .description = COMPOUND_STRING(
             "Can be smelled. It\n"
             "ups Attack, but\n"
@@ -1785,7 +1785,7 @@ const struct Item gItemsInfo[] =
     [ITEM_MODEST_MINT] =
     {
         .name = ITEM_NAME("Modest Mint"),
-        .price = (I_PRICE >= GEN_9) ? 20000 : 20,
+        .price = (I_PRICE >= GEN_9) ? 20 : 20,
         .description = COMPOUND_STRING(
             "Can be smelled. It\n"
             "ups Sp. Atk, but\n"
@@ -10090,11 +10090,11 @@ const struct Item gItemsInfo[] =
     {
         .name = ITEM_NAME("Razor Claw"),
     #if I_PRICE >= GEN_9
-        .price = 15000,
+        .price = 100,
     #elif I_PRICE >= GEN_7
-        .price = 5000,
+        .price = 100,
     #else
-        .price = 2100,
+        .price = 100,
     #endif
         .holdEffect = HOLD_EFFECT_SCOPE_LENS,
         .description = COMPOUND_STRING(

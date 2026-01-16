@@ -18,6 +18,8 @@ OldaleTown_Mart_Pokemart_Basic:
 	.2byte ITEM_ANTIDOTE
 	.2byte ITEM_PARALYZE_HEAL
 	.2byte ITEM_AWAKENING
+	.2byte ITEM_ADAMANT_MINT
+	.2byte ITEM_MODEST_MINT
 	pokemartlistend
 
 OldaleTown_Mart_ExpandedItems::
@@ -33,6 +35,8 @@ OldaleTown_Mart_Pokemart_Expanded:
 	.2byte ITEM_ANTIDOTE
 	.2byte ITEM_PARALYZE_HEAL
 	.2byte ITEM_AWAKENING
+	.2byte ITEM_ADAMANT_MINT
+	.2byte ITEM_MODEST_MINT
 	pokemartlistend
 
 OldaleTown_Mart_EventScript_Woman::

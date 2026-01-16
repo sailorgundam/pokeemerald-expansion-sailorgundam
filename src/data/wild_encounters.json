@@ -85,62 +85,62 @@
               {
                 "min_level": 2,
                 "max_level": 2,
-                "species": "SPECIES_WURMPLE"
+                "species": "SPECIES_TRAPINCH"
               },
               {
                 "min_level": 2,
                 "max_level": 2,
-                "species": "SPECIES_POOCHYENA"
+                "species": "SPECIES_LARVESTA"
               },
               {
                 "min_level": 2,
                 "max_level": 2,
-                "species": "SPECIES_WURMPLE"
+                "species": "SPECIES_TINKATINK"
               },
               {
                 "min_level": 3,
                 "max_level": 3,
-                "species": "SPECIES_WURMPLE"
+                "species": "SPECIES_MANKEY"
               },
               {
                 "min_level": 3,
                 "max_level": 3,
-                "species": "SPECIES_POOCHYENA"
+                "species": "SPECIES_DHELMISE"
               },
               {
                 "min_level": 3,
                 "max_level": 3,
-                "species": "SPECIES_POOCHYENA"
+                "species": "SPECIES_LITTEN"
               },
               {
                 "min_level": 3,
                 "max_level": 3,
-                "species": "SPECIES_WURMPLE"
+                "species": "SPECIES_CRABRAWLER"
               },
               {
                 "min_level": 3,
                 "max_level": 3,
-                "species": "SPECIES_POOCHYENA"
+                "species": "SPECIES_PIKACHU_ALOLA"
               },
               {
                 "min_level": 2,
                 "max_level": 2,
-                "species": "SPECIES_ZIGZAGOON"
+                "species": "SPECIES_SNEASEL_HISUI"
               },
               {
                 "min_level": 2,
                 "max_level": 2,
-                "species": "SPECIES_ZIGZAGOON"
+                "species": "SPECIES_SNEASEL_HISUI"
               },
               {
                 "min_level": 3,
                 "max_level": 3,
-                "species": "SPECIES_ZIGZAGOON"
+                "species": "SPECIES_SNEASEL_HISUI"
               },
               {
                 "min_level": 3,
                 "max_level": 3,
-                "species": "SPECIES_ZIGZAGOON"
+                "species": "SPECIES_SNEASEL_HISUI"
               }
             ]
           }
