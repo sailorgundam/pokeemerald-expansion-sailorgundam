@@ -1958,6 +1958,36 @@
                 "species": "SPECIES_WHISMUR"
               }
             ]
+          },
+          "rock_smash_mons": {
+            "encounter_rate": 20,
+            "mons": [
+              {
+                "min_level": 12,
+                "max_level": 15,
+                "species": "SPECIES_ROGGENROLA"
+              },
+              {
+                "min_level": 12,
+                "max_level": 15,
+                "species": "SPECIES_ROLYCOLY"
+              },
+              {
+                "min_level": 13,
+                "max_level": 15,
+                "species": "SPECIES_NOSEPASS"
+              },
+              {
+                "min_level": 13,
+                "max_level": 15,
+                "species": "SPECIES_GEODUDE_ALOLA"
+              },
+              {
+                "min_level": 13,
+                "max_level": 15,
+                "species": "SPECIES_ROCKRUFF"
+              }
+            ]
           }
         },
         {
