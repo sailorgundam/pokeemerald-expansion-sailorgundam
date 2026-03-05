@@ -445,6 +445,20 @@ EventScript_UseDefog::
 	releaseall
 	end
 
+EventScript_UseDefogGL::
+	lockall
+	showmonpic SPECIES_NOSEPASS, 10, 3
+	playmoncry SPECIES_NOSEPASS, CRY_MODE_NORMAL
+	msgbox Text_GLDefog, MSGBOX_DEFAULT
+	waitmoncry
+	delay 60
+	hidemonpic
+	setfieldeffectargument 0, 0
+	dofieldeffect FLDEFF_DEFOG
+	waitstate
+	releaseall
+	end
+
 EventScript_UseRockClimb::
 	lockall
 	checkfieldmove FIELD_MOVE_ROCK_CLIMB
@@ -581,4 +595,8 @@ text Text_GLStrengthActive{
 
 text Text_GLCantStrength{
     format("It's a big boulder, but a POKéMON\Nmay be able to push it aside.")
+}
+
+text Text_GLDefog{
+    format("Roxanne's Nosepass helped your team to use Defog!")
 }

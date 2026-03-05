@@ -50,6 +50,8 @@
 #include "constants/rgb.h"
 #include "constants/songs.h"
 
+extern u8 PokeHelper_Menu[];
+
 // Menu actions
 enum
 {
@@ -68,6 +70,7 @@ enum
     MENU_ACTION_PYRAMID_BAG,
     MENU_ACTION_DEBUG,
     MENU_ACTION_DEXNAV,
+    MENU_ACTION_POKEHELPERS,
 };
 
 // Save status
@@ -105,6 +108,7 @@ static bool8 StartMenuSaveCallback(void);
 static bool8 StartMenuOptionCallback(void);
 static bool8 StartMenuExitCallback(void);
 static bool8 StartMenuSafariZoneRetireCallback(void);
+static bool8 StartMenuPokeHelpersCallback(void);
 static bool8 StartMenuLinkModePlayerNameCallback(void);
 static bool8 StartMenuBattlePyramidRetireCallback(void);
 static bool8 StartMenuBattlePyramidBagCallback(void);
@@ -199,6 +203,7 @@ static const struct MenuAction sStartMenuItems[] =
     [MENU_ACTION_OPTION]          = {gText_MenuOption,  {.u8_void = StartMenuOptionCallback}},
     [MENU_ACTION_EXIT]            = {gText_MenuExit,    {.u8_void = StartMenuExitCallback}},
     [MENU_ACTION_RETIRE_SAFARI]   = {gText_MenuRetire,  {.u8_void = StartMenuSafariZoneRetireCallback}},
+    [MENU_ACTION_POKEHELPERS]     = {gText_MenuPokeHelpers, {.u8_void = StartMenuPokeHelpersCallback}},
     [MENU_ACTION_PLAYER_LINK]     = {gText_MenuPlayer,  {.u8_void = StartMenuLinkModePlayerNameCallback}},
     [MENU_ACTION_REST_FRONTIER]   = {gText_MenuRest,    {.u8_void = StartMenuSaveCallback}},
     [MENU_ACTION_RETIRE_FRONTIER] = {gText_MenuRetire,  {.u8_void = StartMenuBattlePyramidRetireCallback}},
@@ -333,6 +338,9 @@ static void BuildNormalStartMenu(void)
     if (FlagGet(FLAG_SYS_POKEDEX_GET) == TRUE)
         AddStartMenuAction(MENU_ACTION_POKEDEX);
 
+    if (FlagGet(FLAG_POKE_HELPERS_UNLOCKED ) == TRUE)
+        AddStartMenuAction(MENU_ACTION_POKEHELPERS);
+
     if (DN_FLAG_DEXNAV_GET != 0 && FlagGet(DN_FLAG_DEXNAV_GET))
         AddStartMenuAction(MENU_ACTION_DEXNAV);
 
@@ -355,6 +363,8 @@ static void BuildDebugStartMenu(void)
     AddStartMenuAction(MENU_ACTION_DEBUG);
     if (FlagGet(FLAG_SYS_POKEDEX_GET) == TRUE)
         AddStartMenuAction(MENU_ACTION_POKEDEX);
+    if (FlagGet(FLAG_POKE_HELPERS_UNLOCKED ) == TRUE)
+        AddStartMenuAction(MENU_ACTION_POKEHELPERS);
     if (FlagGet(FLAG_SYS_POKEMON_GET) == TRUE)
         AddStartMenuAction(MENU_ACTION_POKEMON);
     AddStartMenuAction(MENU_ACTION_BAG);
@@ -651,7 +661,8 @@ static bool8 HandleStartMenuInput(void)
             && gMenuCallback != StartMenuExitCallback
             && gMenuCallback != StartMenuDebugCallback
             && gMenuCallback != StartMenuSafariZoneRetireCallback
-            && gMenuCallback != StartMenuBattlePyramidRetireCallback)
+            && gMenuCallback != StartMenuBattlePyramidRetireCallback
+            && gMenuCallback != StartMenuPokeHelpersCallback)
         {
            FadeScreen(FADE_TO_BLACK, 0);
         }
@@ -796,6 +807,16 @@ static bool8 StartMenuDebugCallback(void)
         Debug_ShowMainMenu();
     }
 
+return TRUE;
+}
+
+static bool8 StartMenuPokeHelpersCallback(void)
+{
+    RemoveExtraStartMenuWindows();
+    HideStartMenu();
+    FreezeObjectEvents();
+    ScriptContext_SetupScript(PokeHelper_Menu);
+    
 return TRUE;
 }
 

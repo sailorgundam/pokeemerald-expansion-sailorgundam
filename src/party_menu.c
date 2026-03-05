@@ -4213,6 +4213,11 @@ static void FieldCallback_Surf(void)
     FieldEffectStart(FLDEFF_USE_SURF);
 }
 
+static void FieldCallback_SurfGL(void)
+{
+        FieldEffectStart(FLDEFF_USE_SURF);
+}
+
 bool32 SetUpFieldMove_Surf(void)
 {
     if (!CheckFollowerNPCFlag(FOLLOWER_NPC_FLAG_CAN_SURF))
@@ -4224,6 +4229,14 @@ bool32 SetUpFieldMove_Surf(void)
         gPostMenuFieldCallback = FieldCallback_Surf;
         return TRUE;
     }
+
+    if ((FlagGet(FLAG_DEFEATED_PETALBURG_GYM) == TRUE) && IsPlayerFacingSurfableFishableWater() == TRUE)
+    {
+        gFieldCallback2 = FieldCallback_PrepareFadeInFromMenu;
+        gPostMenuFieldCallback = FieldCallback_SurfGL;
+        return TRUE;
+    }
+
     return FALSE;
 }
 

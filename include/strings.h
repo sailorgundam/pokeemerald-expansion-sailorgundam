@@ -208,6 +208,7 @@ extern const u8 gText_MenuSave[];
 extern const u8 gText_MenuOption[];
 extern const u8 gText_MenuExit[];
 extern const u8 gText_MenuRetire[];
+extern const u8 gText_MenuPokeHelpers[];
 extern const u8 gText_MenuRest[];
 extern const u8 gText_MenuDexNav[];
 extern const u8 gText_Floor1[];
@@ -2415,4 +2416,10 @@ extern const u8 gText_CannotSendMonToBoxHM[];
 extern const u8 gText_CannotSendMonToBoxActive[];
 extern const u8 gText_CannotSendMonToBoxPartner[];
 
+// Poke Helper Menu Choices
+extern const u8 gText_PokeHelperDefog[];
+extern const u8 gText_PokeHelperFlash[];
+extern const u8 gText_PokeHelperFly[];
+
 #endif // GUARD_STRINGS_H
+    

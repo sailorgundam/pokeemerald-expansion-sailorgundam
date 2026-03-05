@@ -587,6 +587,10 @@ static const u8 *GetInteractedWaterScript(struct MapPosition *unused1, u8 metati
      )
         return EventScript_UseSurf;
 
+    if ((FlagGet(FLAG_DEFEATED_PETALBURG_GYM) == TRUE) && IsPlayerFacingSurfableFishableWater() == TRUE
+     )
+        return EventScript_UseSurfGL;
+
     if (MetatileBehavior_IsWaterfall(metatileBehavior) == TRUE
      && CheckFollowerNPCFlag(FOLLOWER_NPC_FLAG_CAN_WATERFALL)
      )

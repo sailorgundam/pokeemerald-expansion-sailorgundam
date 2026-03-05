@@ -1242,6 +1242,11 @@ static void DebugAction_Util_Fly(u8 taskId)
     SetMainCallback2(CB2_OpenFlyMap);
 }
 
+void PokeHelperAction_Util_Fly(void)
+{
+    SetMainCallback2(CB2_OpenFlyMap);
+}
+
 #define tMapGroup  data[5]
 #define tMapNum    data[6]
 #define tWarp      data[7]

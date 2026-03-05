@@ -1,0 +1,67 @@
+script(global)PokeHelper_Menu{
+lockall
+multichoice(25, 5, MULTI_POKEHELPER_CHOICE, 0)
+    if (var(VAR_RESULT) == 0 && !(flag(FLAG_DEFEATED_RUSTBORO_GYM))){
+        msgbox("You can't use this until you defeat\nthe Rustboro Gym.")
+    }
+    if (var(VAR_RESULT) == 0 && (flag(FLAG_DEFEATED_RUSTBORO_GYM))){
+        call(PokeHelperUsedDefog)
+    }
+    if (var(VAR_RESULT) == 1 && !(flag(FLAG_DEFEATED_DEWFORD_GYM))){
+        msgbox("You can't use this until you defeat\nthe Dewford Gym.")
+    }
+    if (var(VAR_RESULT) == 1 && (flag(FLAG_DEFEATED_DEWFORD_GYM)) && !(flag(FLAG_SYS_USE_FLASH))){
+        
+            call(PokeHelperUsedFlash)
+    }
+    if (var(VAR_RESULT) == 1 && (flag(FLAG_DEFEATED_DEWFORD_GYM)) && (flag(FLAG_SYS_USE_FLASH))){
+        
+            msgbox("You have already used FLASH in this area.")
+            releaseall
+            end
+    }
+    if (var(VAR_RESULT) == 2 && !(flag(FLAG_DEFEATED_FORTREE_GYM))){
+        msgbox("You can't use this until you defeat\nthe Fortree Gym.")
+    }
+    if (var(VAR_RESULT) == 2 && (flag(FLAG_DEFEATED_FORTREE_GYM))){
+        call(PokeHelperUsedFly)
+    }
+
+    else{
+        releaseall
+        end
+    }
+}
+
+script(local)PokeHelperUsedDefog{
+    call(EventScript_UseDefogGL)
+    releaseall
+    end
+}
+
+script(local)PokeHelperUsedFlash{
+    setflag(FLAG_SYS_USE_FLASH)
+    showmonpic(SPECIES_MAKUHITA, 10, 5)
+	playmoncry(SPECIES_MAKUHITA, CRY_MODE_NORMAL)
+    msgbox("Brawley's Makuhita helped your team to\nuse FLASH!", MSGBOX_DEFAULT)
+    waitmoncry
+    hidemonpic
+    playse(SE_M_REFLECT)
+    call(EventScript_UseFlash)
+    releaseall
+    end
+}
+
+script(local)PokeHelperUsedFly{
+    showmonpic(SPECIES_ALTARIA, 10, 3)
+	playmoncry(SPECIES_ALTARIA, CRY_MODE_NORMAL)
+    msgbox("Winona's Altaria helped your team to FLY!\nWhere would you like to go?", MSGBOX_DEFAULT)
+    waitmoncry
+    delay(60)
+    hidemonpic
+    closemessage
+    setfieldeffectargument(0, 0)
+    special(PokeHelperAction_Util_Fly)
+    releaseall
+    end
+}
