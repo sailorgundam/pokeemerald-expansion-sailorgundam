@@ -12,7 +12,7 @@ EventScript_UseSurfGL::
 	lockall
 	msgbox gText_WantToUseSurf, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_ReleaseUseSurf
-	bufferspeciesname STR_VAR_1, 320
+	bufferspeciesname STR_VAR_1, 321
 	setfieldeffectargument 0, 0
 	msgbox gText_PlayerUsedSurfGL, MSGBOX_DEFAULT
 	dofieldeffect FLDEFF_USE_SURF
