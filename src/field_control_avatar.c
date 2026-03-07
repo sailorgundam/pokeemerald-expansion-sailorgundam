@@ -582,24 +582,32 @@ static const u8 *GetInteractedMetatileScript(struct MapPosition *position, u8 me
 
 static const u8 *GetInteractedWaterScript(struct MapPosition *unused1, u8 metatileBehavior, u8 direction)
 {
-    if (IsFieldMoveUnlocked(FIELD_MOVE_SURF) && PartyHasMonWithSurf() == TRUE && IsPlayerFacingSurfableFishableWater() == TRUE
-     && CheckFollowerNPCFlag(FOLLOWER_NPC_FLAG_CAN_SURF)
-     )
-        return EventScript_UseSurf;
-
-    if ((FlagGet(FLAG_DEFEATED_PETALBURG_GYM) == TRUE) && IsPlayerFacingSurfableFishableWater() == TRUE
-     )
-        return EventScript_UseSurfGL;
-
-    if (MetatileBehavior_IsWaterfall(metatileBehavior) == TRUE
-     && CheckFollowerNPCFlag(FOLLOWER_NPC_FLAG_CAN_WATERFALL)
-     )
-    {
-        if (IsFieldMoveUnlocked(FIELD_MOVE_WATERFALL) && IsPlayerSurfingNorth() == TRUE)
-            return EventScript_UseWaterfall;
-        else
-            return EventScript_CannotUseWaterfall;
+    if(IsPlayerFacingSurfableFishableWater() == TRUE){
+        //removed default functionality as it was causing issues with the Surf interaction, and there is no need for this unless follower NPCs are enabled.
+        //if (IsFieldMoveUnlocked(FIELD_MOVE_SURF) && PartyHasMonWithSurf() == TRUE && CheckFollowerNPCFlag(FOLLOWER_NPC_FLAG_CAN_SURF)){
+           // return EventScript_UseSurf;
+        // }
+        if ((FlagGet(FLAG_DEFEATED_PETALBURG_GYM) == TRUE)){
+            return EventScript_UseSurfGL;
+        }
     }
+    
+    //Removed functionality for surfing with a follower NPC as it was causing issues with the interaction and there is no need for this unless follower NPCs are enabled.
+    //if (IsFieldMoveUnlocked(FIELD_MOVE_SURF) && PartyHasMonWithSurf() == TRUE && IsPlayerFacingSurfableFishableWater() == TRUE
+    // && CheckFollowerNPCFlag(FOLLOWER_NPC_FLAG_CAN_SURF)
+    // )
+    //{
+    //    return EventScript_UseSurf;
+    //}
+    
+    else if (MetatileBehavior_IsWaterfall(metatileBehavior) == TRUE)
+    {
+        if ((FlagGet(FLAG_DEFEATED_SOOTOPOLIS_GYM) == TRUE) && IsPlayerSurfingNorth() == TRUE)
+            return EventScript_UseWaterfallGL;
+        else
+            return EventScript_CannotUseWaterfallGL;
+    }
+
     return NULL;
 }
 
@@ -608,9 +616,16 @@ static bool32 TrySetupDiveDownScript(void)
     if (!CheckFollowerNPCFlag(FOLLOWER_NPC_FLAG_CAN_DIVE))
         return FALSE;
 
-    if (IsFieldMoveUnlocked(FIELD_MOVE_DIVE) && TrySetDiveWarp() == 2)
+    //Removed functionality for diving with a follower NPC as there is no need for this unless follower NPCs are enabled.
+    //if (IsFieldMoveUnlocked(FIELD_MOVE_DIVE) && TrySetDiveWarp() == 2)
+    //{
+    //    ScriptContext_SetupScript(EventScript_UseDive);
+    //   return TRUE;
+    //}
+
+    if ((FlagGet(FLAG_DEFEATED_MOSSDEEP_GYM) == TRUE) && TrySetDiveWarp() == 2)
     {
-        ScriptContext_SetupScript(EventScript_UseDive);
+        ScriptContext_SetupScript(EventScript_UseDiveGL);
         return TRUE;
     }
     return FALSE;
@@ -621,9 +636,16 @@ static bool32 TrySetupDiveEmergeScript(void)
     if (!CheckFollowerNPCFlag(FOLLOWER_NPC_FLAG_CAN_DIVE))
         return FALSE;
 
-    if (IsFieldMoveUnlocked(FIELD_MOVE_DIVE) && gMapHeader.mapType == MAP_TYPE_UNDERWATER && TrySetDiveWarp() == 1)
+    //Removed functionality for diving with a follower NPC as there is no need for this unless follower NPCs are enabled.
+    //if (IsFieldMoveUnlocked(FIELD_MOVE_DIVE) && gMapHeader.mapType == MAP_TYPE_UNDERWATER && TrySetDiveWarp() == 1)
+    //{
+    //    ScriptContext_SetupScript(EventScript_UseDiveUnderwater);
+    //    return TRUE;
+    //}
+
+    if ((FlagGet(FLAG_DEFEATED_MOSSDEEP_GYM) == TRUE) && gMapHeader.mapType == MAP_TYPE_UNDERWATER && TrySetDiveWarp() == 1)
     {
-        ScriptContext_SetupScript(EventScript_UseDiveUnderwater);
+        ScriptContext_SetupScript(EventScript_UseDiveUnderwaterGL);
         return TRUE;
     }
     return FALSE;

@@ -41,10 +41,11 @@ script(local)PokeHelperUsedDefog{
 
 script(local)PokeHelperUsedFlash{
     setflag(FLAG_SYS_USE_FLASH)
+    msgbox("Brawley's Makuhita helped your team to\nuse FLASH!", MSGBOX_DEFAULT)
     showmonpic(SPECIES_MAKUHITA, 10, 5)
 	playmoncry(SPECIES_MAKUHITA, CRY_MODE_NORMAL)
-    msgbox("Brawley's Makuhita helped your team to\nuse FLASH!", MSGBOX_DEFAULT)
     waitmoncry
+    delay(60)
     hidemonpic
     playse(SE_M_REFLECT)
     call(EventScript_UseFlash)
@@ -53,9 +54,9 @@ script(local)PokeHelperUsedFlash{
 }
 
 script(local)PokeHelperUsedFly{
+    msgbox("Winona's Altaria helped your team to FLY!\nWhere would you like to go?", MSGBOX_DEFAULT)
     showmonpic(SPECIES_ALTARIA, 10, 3)
 	playmoncry(SPECIES_ALTARIA, CRY_MODE_NORMAL)
-    msgbox("Winona's Altaria helped your team to FLY!\nWhere would you like to go?", MSGBOX_DEFAULT)
     waitmoncry
     delay(60)
     hidemonpic

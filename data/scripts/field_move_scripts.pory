@@ -298,7 +298,25 @@ EventScript_UseWaterfall::
 	callnative FollowerNPC_WarpSetEnd
 	goto EventScript_EndWaterfall
 
+EventScript_UseWaterfallGL::
+	lockall
+	setfieldeffectargument 0, 0
+	msgbox Text_WantToWaterfall, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_EndWaterfall
+	bufferspeciesname STR_VAR_1, 230
+	showmonpic SPECIES_KINGDRA, 10, 3
+	playmoncry SPECIES_KINGDRA, CRY_MODE_NORMAL
+	msgbox Text_GLMonUsedWaterfall, MSGBOX_DEFAULT
+	waitmoncry
+	hidemonpic
+	dofieldeffect FLDEFF_USE_WATERFALL
+	callnative FollowerNPC_WarpSetEnd
+	goto EventScript_EndWaterfall
+
 EventScript_CannotUseWaterfall::
+	lockall
+
+EventScript_CannotUseWaterfallGL::
 	lockall
 
 EventScript_CantWaterfall::
@@ -337,6 +355,21 @@ EventScript_UseDive::
 	goto EventScript_EndDive
 	end
 
+EventScript_UseDiveGL::
+	lockall
+	setfieldeffectargument 0, 0
+	msgbox Text_WantToDive, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_EndDive
+	bufferspeciesname STR_VAR_1, 338
+	showmonpic SPECIES_SOLROCK, 10, 3
+	playmoncry SPECIES_SOLROCK, CRY_MODE_NORMAL
+	msgbox Text_GLMonUsedDive, MSGBOX_DEFAULT
+	waitmoncry
+	hidemonpic
+	dofieldeffect FLDEFF_USE_DIVE
+	goto EventScript_EndDive
+	end
+
 EventScript_CantDive::
 	msgbox Text_CantDive, MSGBOX_DEFAULT
 	releaseall
@@ -361,6 +394,21 @@ EventScript_UseDiveUnderwater::
 	goto EventScript_EndSurface
 	end
 
+EventScript_UseDiveUnderwaterGL::
+	lockall
+	setfieldeffectargument 0, 0
+	msgbox Text_WantToSurface, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_NoSurface
+	bufferspeciesname STR_VAR_1, 338
+	showmonpic SPECIES_SOLROCK, 10, 3
+	playmoncry SPECIES_SOLROCK, CRY_MODE_NORMAL
+	msgbox Text_GLMonUsedDive, MSGBOX_DEFAULT
+	waitmoncry
+	hidemonpic
+	dofieldeffect FLDEFF_USE_DIVE
+	goto EventScript_EndSurfaceGL
+	end
+
 EventScript_CantSurface::
 	lockall
 	msgbox Text_CantSurface, MSGBOX_DEFAULT
@@ -369,6 +417,11 @@ EventScript_CantSurface::
 
 EventScript_EndSurface::
 	callnative SetFollowerNPCSurfSpriteAfterDive
+
+EventScript_EndSurfaceGL::
+	releaseall
+	end
+
 EventScript_NoSurface::
 	releaseall
 	end
@@ -599,4 +652,12 @@ text Text_GLCantStrength{
 
 text Text_GLDefog{
     format("Roxanne's Nosepass helped your team to use Defog!")
+}
+
+text Text_GLMonUsedDive{
+	format("Tate & Liza's Solrock helped your\Nteam to use DIVE!")
+}
+
+text Text_GLMonUsedWaterfall{
+	format("Juan's Kingdra helped your team\Nto use WATERFALL!")
 }

@@ -130,44 +130,46 @@ PokeHelperUsedFlash:
 # 43 "data/scripts/PokeHelper_Menu.pory"
 	setflag FLAG_SYS_USE_FLASH
 # 44 "data/scripts/PokeHelper_Menu.pory"
-	showmonpic SPECIES_MAKUHITA, 10, 5
-# 45 "data/scripts/PokeHelper_Menu.pory"
-	playmoncry SPECIES_MAKUHITA, CRY_MODE_NORMAL
-# 46 "data/scripts/PokeHelper_Menu.pory"
 	msgbox PokeHelperUsedFlash_Text_0, MSGBOX_DEFAULT
+# 45 "data/scripts/PokeHelper_Menu.pory"
+	showmonpic SPECIES_MAKUHITA, 10, 5
+# 46 "data/scripts/PokeHelper_Menu.pory"
+	playmoncry SPECIES_MAKUHITA, CRY_MODE_NORMAL
 # 47 "data/scripts/PokeHelper_Menu.pory"
 	waitmoncry
 # 48 "data/scripts/PokeHelper_Menu.pory"
-	hidemonpic
+	delay 60
 # 49 "data/scripts/PokeHelper_Menu.pory"
-	playse SE_M_REFLECT
+	hidemonpic
 # 50 "data/scripts/PokeHelper_Menu.pory"
-	call EventScript_UseFlash
+	playse SE_M_REFLECT
 # 51 "data/scripts/PokeHelper_Menu.pory"
+	call EventScript_UseFlash
+# 52 "data/scripts/PokeHelper_Menu.pory"
 	releaseall
 	end
 
 
 PokeHelperUsedFly:
-# 56 "data/scripts/PokeHelper_Menu.pory"
-	showmonpic SPECIES_ALTARIA, 10, 3
 # 57 "data/scripts/PokeHelper_Menu.pory"
-	playmoncry SPECIES_ALTARIA, CRY_MODE_NORMAL
-# 58 "data/scripts/PokeHelper_Menu.pory"
 	msgbox PokeHelperUsedFly_Text_0, MSGBOX_DEFAULT
+# 58 "data/scripts/PokeHelper_Menu.pory"
+	showmonpic SPECIES_ALTARIA, 10, 3
 # 59 "data/scripts/PokeHelper_Menu.pory"
-	waitmoncry
+	playmoncry SPECIES_ALTARIA, CRY_MODE_NORMAL
 # 60 "data/scripts/PokeHelper_Menu.pory"
-	delay 60
+	waitmoncry
 # 61 "data/scripts/PokeHelper_Menu.pory"
-	hidemonpic
+	delay 60
 # 62 "data/scripts/PokeHelper_Menu.pory"
-	closemessage
+	hidemonpic
 # 63 "data/scripts/PokeHelper_Menu.pory"
-	setfieldeffectargument 0, 0
+	closemessage
 # 64 "data/scripts/PokeHelper_Menu.pory"
-	special PokeHelperAction_Util_Fly
+	setfieldeffectargument 0, 0
 # 65 "data/scripts/PokeHelper_Menu.pory"
+	special PokeHelperAction_Util_Fly
+# 66 "data/scripts/PokeHelper_Menu.pory"
 	releaseall
 	end
 
@@ -189,9 +191,9 @@ PokeHelper_Menu_Text_3:
 	.string "You can't use this until you defeat\nthe Fortree Gym.$"
 
 PokeHelperUsedFlash_Text_0:
-# 46 "data/scripts/PokeHelper_Menu.pory"
+# 44 "data/scripts/PokeHelper_Menu.pory"
 	.string "Brawley's Makuhita helped your team to\nuse FLASH!$"
 
 PokeHelperUsedFly_Text_0:
-# 58 "data/scripts/PokeHelper_Menu.pory"
+# 57 "data/scripts/PokeHelper_Menu.pory"
 	.string "Winona's Altaria helped your team to FLY!\nWhere would you like to go?$"
