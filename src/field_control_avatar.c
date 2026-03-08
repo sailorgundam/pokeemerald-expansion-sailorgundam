@@ -651,6 +651,18 @@ static bool32 TrySetupDiveEmergeScript(void)
     return FALSE;
 }
 
+void CheckIfPlayerInCave(void)
+{
+    FlagClear(FLAG_PLAYER_IN_CAVE);
+    
+    if (gMapHeader.mapType == MAP_TYPE_UNDERGROUND){
+        FlagSet(FLAG_PLAYER_IN_CAVE);
+    }
+    else{
+        FlagClear(FLAG_PLAYER_IN_CAVE);
+    }
+}
+
 static bool8 TryStartStepBasedScript(struct MapPosition *position, u16 metatileBehavior, u16 direction)
 {
     if (TryStartCoordEventScript(position) == TRUE)

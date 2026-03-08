@@ -40,29 +40,59 @@ script(local)PokeHelperUsedDefog{
 }
 
 script(local)PokeHelperUsedFlash{
-    setflag(FLAG_SYS_USE_FLASH)
-    msgbox("Brawley's Makuhita helped your team to\nuse FLASH!", MSGBOX_DEFAULT)
-    showmonpic(SPECIES_MAKUHITA, 10, 5)
-	playmoncry(SPECIES_MAKUHITA, CRY_MODE_NORMAL)
-    waitmoncry
-    delay(60)
-    hidemonpic
-    playse(SE_M_REFLECT)
-    call(EventScript_UseFlash)
-    releaseall
-    end
+    special(CheckIfPlayerInCave)
+    if ((flag(FLAG_PLAYER_IN_CAVE) == TRUE)){
+        setflag(FLAG_SYS_USE_FLASH)
+        msgbox("Brawley's Makuhita helped your team to\nuse FLASH!", MSGBOX_DEFAULT)
+        showmonpic(SPECIES_MAKUHITA, 10, 5)
+        playmoncry(SPECIES_MAKUHITA, CRY_MODE_NORMAL)
+        waitmoncry
+        delay(60)
+        hidemonpic
+        playse(SE_M_REFLECT)
+        call(EventScript_UseFlash)
+        releaseall
+        end
+    }
+
+    elif ((flag(FLAG_PLAYER_IN_CAVE) == FALSE)){
+        msgbox("Brawley's Makuhita can't help you use\nFLASH while you're not in a cave!", MSGBOX_DEFAULT)
+        releaseall
+        end
+    }
+
+    else {
+        msgbox("Brawley's Makuhita can't help you use\nFLASH while you're not in a cave!", MSGBOX_DEFAULT)
+        releaseall
+        end
+    }
 }
 
 script(local)PokeHelperUsedFly{
-    msgbox("Winona's Altaria helped your team to FLY!\nWhere would you like to go?", MSGBOX_DEFAULT)
-    showmonpic(SPECIES_ALTARIA, 10, 3)
-	playmoncry(SPECIES_ALTARIA, CRY_MODE_NORMAL)
-    waitmoncry
-    delay(60)
-    hidemonpic
-    closemessage
-    setfieldeffectargument(0, 0)
-    special(PokeHelperAction_Util_Fly)
-    releaseall
-    end
+    special(CheckIfPlayerUnderwater)
+    if ((flag(FLAG_PLAYER_UNDERWATER) == TRUE)){
+        msgbox("Winona's Altaria can't help you use\nFLY while you're underwater!", MSGBOX_DEFAULT)
+        releaseall
+        end
+    }
+
+    elif ((flag(FLAG_PLAYER_UNDERWATER) == FALSE)){
+        msgbox("Winona's Altaria helped your team to FLY!\nWhere would you like to go?", MSGBOX_DEFAULT)
+        showmonpic(SPECIES_ALTARIA, 10, 3)
+        playmoncry(SPECIES_ALTARIA, CRY_MODE_NORMAL)
+        waitmoncry
+        delay(60)
+        hidemonpic
+        closemessage
+        setfieldeffectargument(0, 0)
+        special(PokeHelperAction_Util_Fly)
+        releaseall
+        end
+    }
+
+    else {
+        msgbox("Winona's Altaria can't help you use\nFLY while you're underwater!", MSGBOX_DEFAULT)
+        releaseall
+        end
+    }
 }

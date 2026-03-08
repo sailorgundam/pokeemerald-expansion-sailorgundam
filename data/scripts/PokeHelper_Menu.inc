@@ -128,48 +128,88 @@ PokeHelperUsedDefog:
 
 PokeHelperUsedFlash:
 # 43 "data/scripts/PokeHelper_Menu.pory"
-	setflag FLAG_SYS_USE_FLASH
+	special CheckIfPlayerInCave
 # 44 "data/scripts/PokeHelper_Menu.pory"
-	msgbox PokeHelperUsedFlash_Text_0, MSGBOX_DEFAULT
+	goto_if_set FLAG_PLAYER_IN_CAVE, PokeHelperUsedFlash_1
+# 58 "data/scripts/PokeHelper_Menu.pory"
+	goto_if_unset FLAG_PLAYER_IN_CAVE, PokeHelperUsedFlash_2
+# 65 "data/scripts/PokeHelper_Menu.pory"
+	msgbox PokeHelperUsedFlash_Text_1, MSGBOX_DEFAULT
+# 66 "data/scripts/PokeHelper_Menu.pory"
+	releaseall
+	end
+
+PokeHelperUsedFlash_1:
 # 45 "data/scripts/PokeHelper_Menu.pory"
-	showmonpic SPECIES_MAKUHITA, 10, 5
+	setflag FLAG_SYS_USE_FLASH
 # 46 "data/scripts/PokeHelper_Menu.pory"
-	playmoncry SPECIES_MAKUHITA, CRY_MODE_NORMAL
+	msgbox PokeHelperUsedFlash_Text_0, MSGBOX_DEFAULT
 # 47 "data/scripts/PokeHelper_Menu.pory"
-	waitmoncry
+	showmonpic SPECIES_MAKUHITA, 10, 5
 # 48 "data/scripts/PokeHelper_Menu.pory"
-	delay 60
+	playmoncry SPECIES_MAKUHITA, CRY_MODE_NORMAL
 # 49 "data/scripts/PokeHelper_Menu.pory"
-	hidemonpic
+	waitmoncry
 # 50 "data/scripts/PokeHelper_Menu.pory"
-	playse SE_M_REFLECT
+	delay 60
 # 51 "data/scripts/PokeHelper_Menu.pory"
-	call EventScript_UseFlash
+	hidemonpic
 # 52 "data/scripts/PokeHelper_Menu.pory"
+	playse SE_M_REFLECT
+# 53 "data/scripts/PokeHelper_Menu.pory"
+	call EventScript_UseFlash
+# 54 "data/scripts/PokeHelper_Menu.pory"
+	releaseall
+	end
+
+PokeHelperUsedFlash_2:
+# 59 "data/scripts/PokeHelper_Menu.pory"
+	msgbox PokeHelperUsedFlash_Text_1, MSGBOX_DEFAULT
+# 60 "data/scripts/PokeHelper_Menu.pory"
 	releaseall
 	end
 
 
 PokeHelperUsedFly:
-# 57 "data/scripts/PokeHelper_Menu.pory"
+# 72 "data/scripts/PokeHelper_Menu.pory"
+	special CheckIfPlayerUnderwater
+# 73 "data/scripts/PokeHelper_Menu.pory"
+	goto_if_set FLAG_PLAYER_UNDERWATER, PokeHelperUsedFly_1
+# 79 "data/scripts/PokeHelper_Menu.pory"
+	goto_if_unset FLAG_PLAYER_UNDERWATER, PokeHelperUsedFly_2
+# 94 "data/scripts/PokeHelper_Menu.pory"
 	msgbox PokeHelperUsedFly_Text_0, MSGBOX_DEFAULT
-# 58 "data/scripts/PokeHelper_Menu.pory"
+# 95 "data/scripts/PokeHelper_Menu.pory"
+	releaseall
+	end
+
+PokeHelperUsedFly_1:
+# 74 "data/scripts/PokeHelper_Menu.pory"
+	msgbox PokeHelperUsedFly_Text_0, MSGBOX_DEFAULT
+# 75 "data/scripts/PokeHelper_Menu.pory"
+	releaseall
+	end
+
+PokeHelperUsedFly_2:
+# 80 "data/scripts/PokeHelper_Menu.pory"
+	msgbox PokeHelperUsedFly_Text_1, MSGBOX_DEFAULT
+# 81 "data/scripts/PokeHelper_Menu.pory"
 	showmonpic SPECIES_ALTARIA, 10, 3
-# 59 "data/scripts/PokeHelper_Menu.pory"
+# 82 "data/scripts/PokeHelper_Menu.pory"
 	playmoncry SPECIES_ALTARIA, CRY_MODE_NORMAL
-# 60 "data/scripts/PokeHelper_Menu.pory"
+# 83 "data/scripts/PokeHelper_Menu.pory"
 	waitmoncry
-# 61 "data/scripts/PokeHelper_Menu.pory"
+# 84 "data/scripts/PokeHelper_Menu.pory"
 	delay 60
-# 62 "data/scripts/PokeHelper_Menu.pory"
+# 85 "data/scripts/PokeHelper_Menu.pory"
 	hidemonpic
-# 63 "data/scripts/PokeHelper_Menu.pory"
+# 86 "data/scripts/PokeHelper_Menu.pory"
 	closemessage
-# 64 "data/scripts/PokeHelper_Menu.pory"
+# 87 "data/scripts/PokeHelper_Menu.pory"
 	setfieldeffectargument 0, 0
-# 65 "data/scripts/PokeHelper_Menu.pory"
+# 88 "data/scripts/PokeHelper_Menu.pory"
 	special PokeHelperAction_Util_Fly
-# 66 "data/scripts/PokeHelper_Menu.pory"
+# 89 "data/scripts/PokeHelper_Menu.pory"
 	releaseall
 	end
 
@@ -191,9 +231,17 @@ PokeHelper_Menu_Text_3:
 	.string "You can't use this until you defeat\nthe Fortree Gym.$"
 
 PokeHelperUsedFlash_Text_0:
-# 44 "data/scripts/PokeHelper_Menu.pory"
+# 46 "data/scripts/PokeHelper_Menu.pory"
 	.string "Brawley's Makuhita helped your team to\nuse FLASH!$"
 
+PokeHelperUsedFlash_Text_1:
+# 59 "data/scripts/PokeHelper_Menu.pory"
+	.string "Brawley's Makuhita can't help you use\nFLASH while you're not in a cave!$"
+
 PokeHelperUsedFly_Text_0:
-# 57 "data/scripts/PokeHelper_Menu.pory"
+# 74 "data/scripts/PokeHelper_Menu.pory"
+	.string "Winona's Altaria can't help you use\nFLY while you're underwater!$"
+
+PokeHelperUsedFly_Text_1:
+# 80 "data/scripts/PokeHelper_Menu.pory"
 	.string "Winona's Altaria helped your team to FLY!\nWhere would you like to go?$"

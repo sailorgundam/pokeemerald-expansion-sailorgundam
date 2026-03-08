@@ -875,6 +875,19 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
     }
 }
 
+void CheckIfPlayerUnderwater(void)
+{
+    FlagClear(FLAG_PLAYER_UNDERWATER);
+    
+    if (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_UNDERWATER){
+        FlagSet(FLAG_PLAYER_UNDERWATER);
+    }
+    else{
+        FlagClear(FLAG_PLAYER_UNDERWATER);
+    }
+}
+
+
 static u8 CheckForPlayerAvatarCollision(u8 direction)
 {
     s16 x, y;

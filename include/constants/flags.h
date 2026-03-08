@@ -1223,8 +1223,8 @@
 #define FLAG_ITEM_SAFARI_ZONE_SOUTH_EAST_BIG_PEARL                  0x492
 
 #define FLAG_POKE_HELPERS_UNLOCKED                                  0x493 // Used to unlock the Poke Helpers feature in the start menu.
-#define FLAG_UNUSED_0x494                                           0x494 // Unused Flag
-#define FLAG_UNUSED_0x495                                           0x495 // Unused Flag
+#define FLAG_PLAYER_UNDERWATER                                      0x494 // Used to indicate when the player is underwater.
+#define FLAG_PLAYER_IN_CAVE                                         0x495 // Used to indicate when the player is in a cave.
 #define FLAG_UNUSED_0x496                                           0x496 // Unused Flag
 #define FLAG_UNUSED_0x497                                           0x497 // Unused Flag
 #define FLAG_UNUSED_0x498                                           0x498 // Unused Flag
