@@ -130,86 +130,106 @@ PokeHelperUsedFlash:
 # 43 "data/scripts/PokeHelper_Menu.pory"
 	special CheckIfPlayerInCave
 # 44 "data/scripts/PokeHelper_Menu.pory"
+	special CheckIfPlayerUnderwater
+# 45 "data/scripts/PokeHelper_Menu.pory"
 	goto_if_set FLAG_PLAYER_IN_CAVE, PokeHelperUsedFlash_1
-# 58 "data/scripts/PokeHelper_Menu.pory"
-	goto_if_unset FLAG_PLAYER_IN_CAVE, PokeHelperUsedFlash_2
-# 65 "data/scripts/PokeHelper_Menu.pory"
-	msgbox PokeHelperUsedFlash_Text_1, MSGBOX_DEFAULT
-# 66 "data/scripts/PokeHelper_Menu.pory"
-	releaseall
-	end
+# 60 "data/scripts/PokeHelper_Menu.pory"
+	goto_if_unset FLAG_PLAYER_IN_CAVE, PokeHelperUsedFlash_7
+PokeHelperUsedFlash_5:
+# 67 "data/scripts/PokeHelper_Menu.pory"
+	goto_if_unset FLAG_PLAYER_IN_CAVE, PokeHelperUsedFlash_4
+	return
 
 PokeHelperUsedFlash_1:
-# 45 "data/scripts/PokeHelper_Menu.pory"
-	setflag FLAG_SYS_USE_FLASH
 # 46 "data/scripts/PokeHelper_Menu.pory"
-	msgbox PokeHelperUsedFlash_Text_0, MSGBOX_DEFAULT
+	setflag FLAG_SYS_USE_FLASH
 # 47 "data/scripts/PokeHelper_Menu.pory"
-	showmonpic SPECIES_MAKUHITA, 10, 5
+	msgbox PokeHelperUsedFlash_Text_0, MSGBOX_DEFAULT
 # 48 "data/scripts/PokeHelper_Menu.pory"
-	playmoncry SPECIES_MAKUHITA, CRY_MODE_NORMAL
+	showmonpic SPECIES_MAKUHITA, 10, 5
 # 49 "data/scripts/PokeHelper_Menu.pory"
-	waitmoncry
+	playmoncry SPECIES_MAKUHITA, CRY_MODE_NORMAL
 # 50 "data/scripts/PokeHelper_Menu.pory"
-	delay 60
+	waitmoncry
 # 51 "data/scripts/PokeHelper_Menu.pory"
-	hidemonpic
+	delay 60
 # 52 "data/scripts/PokeHelper_Menu.pory"
-	playse SE_M_REFLECT
+	hidemonpic
 # 53 "data/scripts/PokeHelper_Menu.pory"
-	call EventScript_UseFlash
+	closemessage
 # 54 "data/scripts/PokeHelper_Menu.pory"
+	playse SE_M_REFLECT
+# 55 "data/scripts/PokeHelper_Menu.pory"
+	call EventScript_UseFlash
+# 56 "data/scripts/PokeHelper_Menu.pory"
 	releaseall
 	end
 
 PokeHelperUsedFlash_2:
-# 59 "data/scripts/PokeHelper_Menu.pory"
+# 62 "data/scripts/PokeHelper_Menu.pory"
 	msgbox PokeHelperUsedFlash_Text_1, MSGBOX_DEFAULT
-# 60 "data/scripts/PokeHelper_Menu.pory"
+# 63 "data/scripts/PokeHelper_Menu.pory"
 	releaseall
 	end
 
+PokeHelperUsedFlash_3:
+# 68 "data/scripts/PokeHelper_Menu.pory"
+	msgbox PokeHelperUsedFlash_Text_2, MSGBOX_DEFAULT
+# 69 "data/scripts/PokeHelper_Menu.pory"
+	releaseall
+	end
+
+PokeHelperUsedFlash_4:
+# 67 "data/scripts/PokeHelper_Menu.pory"
+	goto_if_set FLAG_PLAYER_UNDERWATER, PokeHelperUsedFlash_3
+	return
+
+PokeHelperUsedFlash_7:
+# 60 "data/scripts/PokeHelper_Menu.pory"
+	goto_if_unset FLAG_PLAYER_UNDERWATER, PokeHelperUsedFlash_2
+	goto PokeHelperUsedFlash_5
+
 
 PokeHelperUsedFly:
-# 72 "data/scripts/PokeHelper_Menu.pory"
+# 76 "data/scripts/PokeHelper_Menu.pory"
 	special CheckIfPlayerUnderwater
-# 73 "data/scripts/PokeHelper_Menu.pory"
+# 77 "data/scripts/PokeHelper_Menu.pory"
 	goto_if_set FLAG_PLAYER_UNDERWATER, PokeHelperUsedFly_1
-# 79 "data/scripts/PokeHelper_Menu.pory"
+# 83 "data/scripts/PokeHelper_Menu.pory"
 	goto_if_unset FLAG_PLAYER_UNDERWATER, PokeHelperUsedFly_2
-# 94 "data/scripts/PokeHelper_Menu.pory"
+# 98 "data/scripts/PokeHelper_Menu.pory"
 	msgbox PokeHelperUsedFly_Text_0, MSGBOX_DEFAULT
-# 95 "data/scripts/PokeHelper_Menu.pory"
+# 99 "data/scripts/PokeHelper_Menu.pory"
 	releaseall
 	end
 
 PokeHelperUsedFly_1:
-# 74 "data/scripts/PokeHelper_Menu.pory"
+# 78 "data/scripts/PokeHelper_Menu.pory"
 	msgbox PokeHelperUsedFly_Text_0, MSGBOX_DEFAULT
-# 75 "data/scripts/PokeHelper_Menu.pory"
+# 79 "data/scripts/PokeHelper_Menu.pory"
 	releaseall
 	end
 
 PokeHelperUsedFly_2:
-# 80 "data/scripts/PokeHelper_Menu.pory"
-	msgbox PokeHelperUsedFly_Text_1, MSGBOX_DEFAULT
-# 81 "data/scripts/PokeHelper_Menu.pory"
-	showmonpic SPECIES_ALTARIA, 10, 3
-# 82 "data/scripts/PokeHelper_Menu.pory"
-	playmoncry SPECIES_ALTARIA, CRY_MODE_NORMAL
-# 83 "data/scripts/PokeHelper_Menu.pory"
-	waitmoncry
 # 84 "data/scripts/PokeHelper_Menu.pory"
-	delay 60
+	msgbox PokeHelperUsedFly_Text_1, MSGBOX_DEFAULT
 # 85 "data/scripts/PokeHelper_Menu.pory"
-	hidemonpic
+	showmonpic SPECIES_ALTARIA, 10, 3
 # 86 "data/scripts/PokeHelper_Menu.pory"
-	closemessage
+	playmoncry SPECIES_ALTARIA, CRY_MODE_NORMAL
 # 87 "data/scripts/PokeHelper_Menu.pory"
-	setfieldeffectargument 0, 0
+	waitmoncry
 # 88 "data/scripts/PokeHelper_Menu.pory"
-	special PokeHelperAction_Util_Fly
+	delay 60
 # 89 "data/scripts/PokeHelper_Menu.pory"
+	hidemonpic
+# 90 "data/scripts/PokeHelper_Menu.pory"
+	closemessage
+# 91 "data/scripts/PokeHelper_Menu.pory"
+	setfieldeffectargument 0, 0
+# 92 "data/scripts/PokeHelper_Menu.pory"
+	special PokeHelperAction_Util_Fly
+# 93 "data/scripts/PokeHelper_Menu.pory"
 	releaseall
 	end
 
@@ -231,17 +251,21 @@ PokeHelper_Menu_Text_3:
 	.string "You can't use this until you defeat\nthe Fortree Gym.$"
 
 PokeHelperUsedFlash_Text_0:
-# 46 "data/scripts/PokeHelper_Menu.pory"
+# 47 "data/scripts/PokeHelper_Menu.pory"
 	.string "Brawley's Makuhita helped your team to\nuse FLASH!$"
 
 PokeHelperUsedFlash_Text_1:
-# 59 "data/scripts/PokeHelper_Menu.pory"
+# 62 "data/scripts/PokeHelper_Menu.pory"
 	.string "Brawley's Makuhita can't help you use\nFLASH while you're not in a cave!$"
 
+PokeHelperUsedFlash_Text_2:
+# 68 "data/scripts/PokeHelper_Menu.pory"
+	.string "Brawley's Makuhita can't help you use\nFLASH while you're underwater!$"
+
 PokeHelperUsedFly_Text_0:
-# 74 "data/scripts/PokeHelper_Menu.pory"
+# 78 "data/scripts/PokeHelper_Menu.pory"
 	.string "Winona's Altaria can't help you use\nFLY while you're underwater!$"
 
 PokeHelperUsedFly_Text_1:
-# 80 "data/scripts/PokeHelper_Menu.pory"
+# 84 "data/scripts/PokeHelper_Menu.pory"
 	.string "Winona's Altaria helped your team to FLY!\nWhere would you like to go?$"
